@@ -45,9 +45,7 @@ public class Population {
         Random rand = new Random();
 
         for(int i = 0; i < 5; i++){
-            int randomNumber = rand.nextInt(10);
-            Member randomMember = members.get(randomNumber);
-            System.out.println("Member "+randomNumber);
+            Member randomMember = members.get(rand.nextInt(10));
             randomMember.mutate();
         }
     }
@@ -57,13 +55,23 @@ public class Population {
             member.decode();
         }
     }
-
     public void showResult(){
         System.out.println("X = "+this.members.get(0).getX());
         System.out.println("Y = "+this.members.get(0).getY());
         System.out.println("Fitness = "+this.members.get(0).getFitnessValue());
         System.out.println("Chromosome = "+this.members.get(0).getChromosome());
     }
+
+    public void showPopulation(){
+        for (Member member: this.members) {
+            System.out.print("X = "+member.getX());
+            System.out.print("\t\tY = "+member.getY());
+            System.out.print("\t\tChromosome = "+member.getChromosome());
+            System.out.println("\t\tFitness = "+member.getFitnessValue());
+        }
+        System.out.println();
+    }
+
 
     private void orderByFitnessValue() {
         this.members.sort((value1, value2) -> Integer.compare(value2.getFitnessValue(), value1.getFitnessValue()));

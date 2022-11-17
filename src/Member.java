@@ -37,7 +37,6 @@ public class Member {
     public void mutate(){
         Random rand = new Random();
         Integer randomGene = rand.nextInt(6);
-        System.out.println("Gene "+randomGene);
         StringBuilder chromosome = new StringBuilder(this.chromosome);
         char newGene = chromosome.charAt(randomGene) == '0' ? '1' : '0';
         chromosome.setCharAt(randomGene, newGene);
